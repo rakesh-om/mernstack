@@ -3,134 +3,254 @@
     background-color: #0d0d0d;
     color: #e5e7eb;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
-  
-  .container {
+}
+
+.container {
     max-width: 1200px;
     margin: 0 auto;
-  }
-  
-  .about-content {
+}
+
+.about-content {
     display: flex;
     flex-wrap: wrap;
     gap: 40px;
     align-items: center;
     justify-content: center;
-  }
-  
-  .about-avatar {
+}
+
+.about-avatar {
     width: 260px;
     max-width: 100%;
     border-radius: 16px;
     box-shadow: 0 10px 25px rgba(249, 115, 22, 0.3);
     border: 2px solid #f97316;
     object-fit: cover;
-  }
-  
-  .about-text {
+}
+
+.about-text {
     flex: 1;
     min-width: 280px;
-  }
-  
-  .about-text h2 {
+}
+
+.about-text h2 {
     font-size: 36px;
     color: #f97316;
     margin-bottom: 10px;
-  }
-  
-  .about-text h4 {
+}
+
+.about-text h4 {
     font-size: 22px;
     color: #a3a3a3;
     margin-bottom: 20px;
     font-weight: 500;
-  }
-  
-  .bio {
+}
+
+.bio {
     font-size: 16px;
     line-height: 1.7;
     margin-bottom: 16px;
     color: #d4d4d4;
-  }
-  
-  .summary {
+}
+
+.summary {
     font-size: 16px;
     line-height: 1.6;
     color: #cbd5e1;
-  }
-  
-  /* Quick Facts Section */
-  .fact {
+}
+
+/* Quick Facts Section */
+.fact {
     display: flex;
     align-items: center;
     margin-top: 12px;
     font-weight: 500;
     font-size: 15px;
     color: #facc15; /* Yellow text */
-  }
-  
-  /* Icon Base */
-  .icon {
+}
+
+/* Icon Base */
+.icon {
     margin-right: 10px;
     vertical-align: middle;
     font-size: 18px;
-  }
-  
-  /* Icon Specific Colors */
-  .icon--experience {
+}
+
+/* Icon Specific Colors */
+.icon--experience {
     color: #f97316; /* Orange */
-  }
-  
-  .icon--projects {
+}
+
+.icon--projects {
     color: #38bdf8; /* Sky Blue */
-  }
-  
-  .icon--clients {
+}
+
+.icon--clients {
     color: #4ade80; /* Green */
-  }
-  
-  @media (max-width: 768px) {
-    .about-content {
-      flex-direction: column;
-      text-align: center;
-    }
-  
-    .about-text h2 {
-      font-size: 28px;
-    }
-  
-    .about-text h4 {
-      font-size: 18px;
-    }
-  
-    .about-avatar {
-      width: 180px;
-    }
-  }
-  .icon {
-    margin-right: 10px;
-    vertical-align: middle;
+}
+
+.education {
+    margin-top: 40px;
+}
+
+.education h3 {
+    font-size: 24px;
+    color: #f97316;
+    margin-bottom: 20px;
+}
+
+.education-details {
+    font-size: 16px;
+    color: #d4d4d4;
+}
+
+.education-item h4 {
     font-size: 18px;
-  }
-  
-  /* Color-coded icons for understanding */
-  .icon--experience {
-    color: #f97316; /* Orange = growth/learning */
-  }
-  
-  .icon--projects {
-    color: #38bdf8; /* Sky Blue = innovation, launch */
-  }
-  
-  .icon--clients {
-    color: #4ade80; /* Green = trust, success */
-  }
-  
-  .fact {
-    display: flex;
-    align-items: center;
-    margin-top: 12px;
-    font-weight: 500;
-    font-size: 15px;
-    color: #facc15; /* Yellow text for emphasis */
-  }
-  
+    color: #f97316;
+}
+
+.languages {
+    margin-top: 40px;
+}
+
+.languages h3 {
+    font-size: 24px;
+    color: #f97316;
+    margin-bottom: 20px;
+}
+
+.languages ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.languages li {
+    font-size: 16px;
+    color: #d4d4d4;
+}
+
+.experience {
+    margin-top: 40px;
+}
+
+.experience h3 {
+    font-size: 24px;
+    color: #f97316;
+    margin-bottom: 20px;
+}
+
+.experience-details {
+    font-size: 16px;
+    color: #d4d4d4;
+}
+
+.experience-item h4 {
+    font-size: 18px;
+    color: #f97316;
+}
+
+.certifications {
+    margin-top: 40px;
+}
+
+.certifications h3 {
+    font-size: 24px;
+    color: #f97316;
+    margin-bottom: 20px;
+}
+
+.certifications ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.certifications li {
+    font-size: 16px;
+    color: #d4d4d4;
+}
+
+.certifications li .icon {
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+.interests {
+    margin-top: 40px;
+}
+
+.interests h3 {
+    font-size: 24px;
+    color: #f97316;
+    margin-bottom: 20px;
+}
+
+.interests ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.interests li {
+    font-size: 16px;
+    color: #d4d4d4;
+}
+
+.contact {
+    margin-top: 40px;
+}
+
+.contact h3 {
+    font-size: 24px;
+    color: #f97316;
+    margin-bottom: 20px;
+}
+
+.contact-details p {
+    font-size: 16px;
+    color: #d4d4d4;
+}
+
+.social-links a {
+    color: #38bdf8;
+    margin-right: 15px;
+    font-size: 16px;
+}
+
+.social-links a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .about-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .about-text h2 {
+        font-size: 28px;
+    }
+
+    .about-text h4 {
+        font-size: 18px;
+    }
+
+    .about-avatar {
+        width: 180px;
+    }
+
+    .education-item,
+    .experience-item {
+        margin-bottom: 20px;
+    }
+
+    .education h3,
+    .languages h3,
+    .experience h3,
+    .certifications h3,
+    .interests h3,
+    .contact h3 {
+        font-size: 20px;
+    }
+
+    .contact-details p {
+        font-size: 14px;
+    }
+}
