@@ -1,4 +1,4 @@
-const express = require('express');
+const express = require('express'); 
 const mongoose = require('mongoose');
 const cors = require('cors');
 require('dotenv').config();
@@ -22,13 +22,16 @@ app.get('/', (req, res) => {
   res.send('API is running...');
 });
 
-// Import and use project routes
+// Routes
 const projectRoutes = require('./routes/projects');
-app.use('/api/projects', projectRoutes);
-
-// ✅ Import and use profile route
 const profileRoutes = require('./routes/profile');
+const contactRoute = require('./routes/contact');
+
+app.use('/api/projects', projectRoutes);
 app.use('/api/profiles', profileRoutes);
+app.use('/api/contact', contactRoute);
 
 // Start server
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(PORT, () => 
+  console.log('\x1b[36m%s\x1b[0m', `🚀 Server running at http://localhost:${PORT}`)
+);
