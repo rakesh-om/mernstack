@@ -12,16 +12,43 @@ const ContactForm = () => {
     projectDetails: '',
   });
 
+  const [errors, setErrors] = useState({});
+
+  const validate = () => {
+    const newErrors = {};
+
+    if (!formData.name.trim()) newErrors.name = 'Name is required';
+    else if (formData.name.trim().length < 2) newErrors.name = 'Name must be at least 2 characters';
+
+    if (!formData.email.trim()) newErrors.email = 'Email is required';
+    else if (!/\S+@\S+\.\S+/.test(formData.email)) newErrors.email = 'Invalid email address';
+
+    if (formData.phone && !/^\d{7,15}$/.test(formData.phone)) {
+      newErrors.phone = 'Phone must be 7-15 digits';
+    }
+
+    if (!formData.service) newErrors.service = 'Please select a service';
+
+    if (!formData.projectDetails.trim()) newErrors.projectDetails = 'Project description is required';
+    else if (formData.projectDetails.length < 10) newErrors.projectDetails = 'Description must be at least 10 characters';
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
       [name]: value,
     }));
+    setErrors(prev => ({ ...prev, [name]: '' }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!validate()) return;
 
     try {
       await axios.post('http://localhost:5000/api/contact', formData);
@@ -34,6 +61,7 @@ const ContactForm = () => {
         timeline: '',
         projectDetails: '',
       });
+      setErrors({});
     } catch (err) {
       console.error('Failed to send message:', err);
       alert('Oops! Something went wrong. Please try again later.');
@@ -43,9 +71,7 @@ const ContactForm = () => {
   return (
     <div className="contact-form-container">
       <h2 className="contact-form-title">Contact Me</h2>
-      <p className="contact-form-subtitle">
-        Let’s collaborate! Fill out the form to get in touch.
-      </p>
+      <p className="contact-form-subtitle">Let’s collaborate! Fill out the form to get in touch.</p>
 
       <form onSubmit={handleSubmit} className="contact-form">
         <div className="contact-form-row">
@@ -58,8 +84,8 @@ const ContactForm = () => {
               value={formData.name}
               onChange={handleChange}
               className="form-input"
-              required
             />
+            {errors.name && <p className="form-error">{errors.name}</p>}
           </div>
 
           <div className="form-input-group">
@@ -71,8 +97,8 @@ const ContactForm = () => {
               value={formData.email}
               onChange={handleChange}
               className="form-input"
-              required
             />
+            {errors.email && <p className="form-error">{errors.email}</p>}
           </div>
         </div>
 
@@ -87,6 +113,7 @@ const ContactForm = () => {
               onChange={handleChange}
               className="form-input"
             />
+            {errors.phone && <p className="form-error">{errors.phone}</p>}
           </div>
 
           <div className="form-input-group">
@@ -104,6 +131,7 @@ const ContactForm = () => {
               <option value="ui-ux-design">UI/UX Design</option>
               <option value="digital-marketing">Digital Marketing</option>
             </select>
+            {errors.service && <p className="form-error">{errors.service}</p>}
           </div>
         </div>
 
@@ -130,6 +158,7 @@ const ContactForm = () => {
               rows={4}
               className="form-textarea"
             />
+            {errors.projectDetails && <p className="form-error">{errors.projectDetails}</p>}
           </div>
         </div>
 

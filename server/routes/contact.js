@@ -1,36 +1,52 @@
 const express = require('express');
 const router = express.Router();
-require('dotenv').config();
-const { Resend } = require('resend');
+const nodemailer = require('nodemailer');
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+router.post('/', async (req, res) => {
+  const { name, email, projectDetails } = req.body;
+  console.log('📥 Received contact form data:', req.body);
 
-router.post('/contactroute', async (req, res) => {
-    console.log("Called")
-  const { name, email, phone, service, timeline, projectDetails } = req.body;
+  if (!name || !email || !projectDetails) {
+    console.log('❌ Missing required fields');
+    return res.status(400).json({ error: 'All fields are required.' });
+  }
+
+  const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_PASS,
+    },
+  });
+
+  transporter.verify((error, success) => {
+    if (error) {
+      console.error('🚫 Email transporter failed:', error);
+    } else {
+      console.log('✅ Email transporter ready');
+    }
+  });
+
+  const mailOptions = {
+    from: `"Portfolio Contact Form" <${process.env.EMAIL_USER}>`,
+    to: process.env.OWNER_EMAIL,
+    subject: '📩 New Contact Form Submission',
+    text: `
+New contact form submission:
+
+Name: ${name}
+Email: ${email}
+Message: ${projectDetails}
+    `,
+  };
 
   try {
-    const response = await resend.emails.send({
-      from: email,
-      to: 'rakeshbannagare014@gmail.com', // ✅ Your real email
-      subject: `New Contact from ${name}`,
-      html: `
-        <h3>New Inquiry Received</h3>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Phone:</strong> ${phone}</p>
-        <p><strong>Service:</strong> ${service}</p>
-        <p><strong>Timeline:</strong> ${timeline}</p>
-        <p><strong>Project Details:</strong><br>${projectDetails}</p>
-      `
-    });
-
-    console.log('Email sent:', response);
-    res.status(200).json({ message: 'Message sent successfully!' });
-
-  } catch (error) {
-    console.error('Resend email error:', error);
-    res.status(500).json({ error: 'Failed to send message' });
+    const info = await transporter.sendMail(mailOptions);
+    console.log('✅ Email sent successfully:', info.response);
+    res.status(200).json({ message: 'Email sent successfully' });
+  } catch (err) {
+    console.error('🚨 Error sending email:', err);
+    res.status(500).json({ error: 'Email failed to send' });
   }
 });
 

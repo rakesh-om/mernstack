@@ -10,16 +10,32 @@ import '../components/Hero.css';
 
 const Hero = () => {
   const [profile, setProfile] = useState(null);
+  const [currentTitleIndex, setCurrentTitleIndex] = useState(0);
+  const [titleArray, setTitleArray] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       const res = await getProfile();
       if (Array.isArray(res) && res.length > 0) {
-        setProfile(res[0]);
+        const fetchedProfile = res[0];
+        setProfile(fetchedProfile);
+
+        // ✅ Dynamically split the title string by `/`
+        const titles = fetchedProfile.title.split('/').map(t => t.trim());
+        setTitleArray(titles);
       }
     };
     fetchData();
   }, []);
+
+  useEffect(() => {
+    if (titleArray.length === 0) return;
+    const interval = setInterval(() => {
+      setCurrentTitleIndex((prevIndex) => (prevIndex + 1) % titleArray.length);
+    }, 2000); // Change every 2 seconds
+
+    return () => clearInterval(interval);
+  }, [titleArray]);
 
   if (!profile) return null;
 
@@ -27,13 +43,14 @@ const Hero = () => {
     <section className="hero-section">
       <div className="hero-profile page-wrapper">
         <div className="hero-content">
-          {/* Left Content */}
+          {/* Left */}
           <div className="hero-left">
             <h4>Hi I am</h4>
             <h2>{profile.name}</h2>
-            <h1>{profile.title}</h1>
+            {/* ✅ Show one title at a time dynamically */}
+            <h1>{titleArray[currentTitleIndex]}</h1>
 
-            {/* Social Icons */}
+            {/* Social Links */}
             <div className="social-links">
               {profile.contact?.social?.instagram && (
                 <a href={profile.contact.social.instagram} target="_blank" rel="noopener noreferrer">
@@ -50,8 +67,8 @@ const Hero = () => {
                   <FaFacebookF />
                 </a>
               )}
-              {profile.contact?.social?.email && (
-                <a href={`mailto:${profile.contact.social.email}`} target="_blank" rel="noopener noreferrer">
+              {profile.contact?.email && (
+                <a href={`mailto:${profile.contact.email}`} target="_blank" rel="noopener noreferrer">
                   <FaEnvelope />
                 </a>
               )}
@@ -76,16 +93,9 @@ const Hero = () => {
                 Experiences
               </div>
               <div className="divider"></div>
-
               <div className="details">
                 <span className="highlight">{profile.projectSummary}</span>
                 Project done
-              </div>
-              <div className="divider"></div>
-
-              <div className="details">
-                <span className="highlight">{profile.clients}</span>
-                Happy Clients
               </div>
             </div>
           </div>

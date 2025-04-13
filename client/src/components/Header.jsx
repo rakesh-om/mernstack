@@ -22,7 +22,7 @@ const Header = () => {
   };
 
   return (
-    <header>
+    <header className='header'>
       <nav className="navbar">
         <div className="navbar-burger" onClick={toggleMobileMenu}>
           <div className="bar"></div>

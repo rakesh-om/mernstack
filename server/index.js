@@ -1,37 +1,35 @@
-const express = require('express'); 
+const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 require('dotenv').config();
 
 const app = express();
+const PORT = process.env.PORT || 5000;
+
+// Middleware
 app.use(cors());
 app.use(express.json());
-
-const PORT = process.env.PORT || 5000;
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
-.then(() => console.log('MongoDB connected'))
-.catch((err) => console.error('MongoDB connection error:', err));
+.then(() => console.log('✅ Successfully connected to MongoDB'))
+.catch((error) => console.error('❌ Failed to connect to MongoDB:', error));
 
-// Base route
-app.get('/', (req, res) => {
-  res.send('API is running...');
-});
-
-// Routes
-const projectRoutes = require('./routes/projects');
+// Route imports
 const profileRoutes = require('./routes/profile');
-const contactRoute = require('./routes/contact');
+const contactRoutes = require('./routes/contact');
 
-app.use('/api/projects', projectRoutes);
+// Route usage
 app.use('/api/profiles', profileRoutes);
-app.use('/api/contact', contactRoute);
+app.use('/api/contact', contactRoutes);
 
-// Start server
-app.listen(PORT, () => 
-  console.log('\x1b[36m%s\x1b[0m', `🚀 Server running at http://localhost:${PORT}`)
-);
+// Default route
+app.get('/', (req, res) => res.send('🌐 API is up and running'));
+
+// Start the server
+app.listen(PORT, () => {
+  console.log(`🚀 Server is live at: http://localhost:${PORT}`);
+});
