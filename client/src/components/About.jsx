@@ -2,34 +2,61 @@ import React, { useEffect, useState } from 'react';
 import { getProfile } from '../api/api';
 import './AboutMe.css';
 
-// Icons from react-icons
-import { FaBrain, FaRocket, FaHandshake } from 'react-icons/fa';
+// Icons
+import { FaBrain, FaRocket } from 'react-icons/fa';
 
 const AboutMe = () => {
   const [profile, setProfile] = useState(null);
+  const [titleArray, setTitleArray] = useState([]);
+  const [currentTitleIndex, setCurrentTitleIndex] = useState(0);
 
+  // Fetch profile data
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchProfile = async () => {
       const res = await getProfile();
       if (Array.isArray(res) && res.length > 0) {
-        setProfile(res[0]);
+        const fetchedProfile = res[0];
+        setProfile(fetchedProfile);
+
+        // Split title into dynamic segments
+        const titles = fetchedProfile.title.split('/').map(t => t.trim());
+        setTitleArray(titles);
       }
     };
-    fetchData();
+
+    fetchProfile();
   }, []);
+
+  // Loop through dynamic title
+  useEffect(() => {
+    if (titleArray.length === 0) return;
+
+    const interval = setInterval(() => {
+      setCurrentTitleIndex((prev) => (prev + 1) % titleArray.length);
+    }, 2000);
+
+    return () => clearInterval(interval);
+  }, [titleArray]);
 
   if (!profile) return <div className="loading">Loading...</div>;
 
   return (
     <section className="about-section">
-      <div className="container">
+      <div className="container page-wrapper">
         <div className="about-content">
-          <img src={profile.avatar} alt={profile.name} className="about-avatar" />
+          <div className='imgae-about'><img
+            src={profile.avatar || '/default-profile.png'}
+            alt={profile.name}
+            className="about-avatar"
+          /></div>
+
           <div className="about-text">
             <h2 className="about-name">{profile.name}</h2>
-            <h4 className="about-title">{profile.title}</h4>
+            <h4 className="about-title">{titleArray[currentTitleIndex]}</h4>
+
             <p className="bio">{profile.bio}</p>
             <p className="summary">{profile.summary}</p>
+
             <div className="quick-facts">
               <span className="fact">
                 <FaBrain className="icon icon-experience" />
@@ -39,10 +66,7 @@ const AboutMe = () => {
                 <FaRocket className="icon icon-projects" />
                 <strong>Projects:</strong> {profile.projectSummary}
               </span>
-              <span className="fact">
-                <FaHandshake className="icon icon-clients" />
-                <strong>Clients:</strong> {profile.clients}
-              </span>
+             
             </div>
           </div>
         </div>

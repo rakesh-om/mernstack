@@ -32,8 +32,10 @@ const Skills = () => {
 
   return (
     <section className="skills-section">
-      <h2 className="skills-heading">Skills</h2>
-      <div className="skills-category-container">
+      <div className ="container page-wrapper">
+      <div className="skills-category-container ">
+
+        <h2 className="skills-heading">Skills</h2>
         {Object.entries(skills).map(([category, skillList]) => (
           <div key={category} className="skills-category">
             <h3 className="skills-category-title">{category}</h3>
@@ -51,6 +53,7 @@ const Skills = () => {
             </div>
           </div>
         ))}
+      </div>
       </div>
     </section>
   );

@@ -1,256 +1,168 @@
-.about-section {
-    padding: 60px 20px;
-    background-color: #0d0d0d;
-    color: #e5e7eb;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.about-content {
+/* === Global Styles === */
+body {
+    background-color: #000;
+    font-family: 'Poppins', sans-serif;
+    color: #fefefe;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* === Layout === */
+  .about-content {
     display: flex;
     flex-wrap: wrap;
     gap: 40px;
     align-items: center;
     justify-content: center;
-}
-
-.about-avatar {
+    padding: 30px;
+    background-color: #0f0f0f; /* Deep black */
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(255, 87, 34, 0.1);
+  }
+  
+  /* === Avatar === */
+  .about-avatar {
     width: 260px;
     max-width: 100%;
-    border-radius: 16px;
-    box-shadow: 0 10px 25px rgba(249, 115, 22, 0.3);
-    border: 2px solid #f97316;
+    min-width: 160px;
+    border-radius: 18px;
+    border: 3px solid #ff6a00; /* Orange */
+    box-shadow: 0 12px 28px rgba(255, 87, 34, 0.4);
     object-fit: cover;
-}
-
-.about-text {
+    transition: transform 0.3s ease;
+  }
+  
+  .about-avatar:hover {
+    transform: scale(1.05);
+  }
+  
+  /* === Text Block === */
+  .about-text {
     flex: 1;
     min-width: 280px;
-}
-
-.about-text h2 {
-    font-size: 36px;
-    color: #f97316;
+    width: 100%;
+  }
+  
+  /* === Name === */
+  .about-text h2 {
+    font-size: clamp(24px, 5vw, 36px); /* Responsive font size */
+    color: #ff6a00; /* Orange */
+    font-weight: 700;
     margin-bottom: 10px;
-}
-
-.about-text h4 {
-    font-size: 22px;
-    color: #a3a3a3;
-    margin-bottom: 20px;
+  }
+  
+  /* === Dynamic Title === */
+  .about-text h4 {
+    font-size: clamp(18px, 4vw, 22px); /* Responsive font size */
+    color: #f97316; /* Lighter Orange */
     font-weight: 500;
-}
-
-.bio {
+    margin-bottom: 20px;
+  }
+  
+  /* === Bio & Summary === */
+  .bio,
+  .summary {
     font-size: 16px;
     line-height: 1.7;
+    color: #e0e0e0;
     margin-bottom: 16px;
-    color: #d4d4d4;
-}
-
-.summary {
-    font-size: 16px;
-    line-height: 1.6;
-    color: #cbd5e1;
-}
-
-/* Quick Facts Section */
-.fact {
+  }
+  
+  /* === Quick Facts === */
+  .quick-facts {
+    margin-top: 20px;
+  }
+  
+  .fact {
     display: flex;
     align-items: center;
-    margin-top: 12px;
     font-weight: 500;
     font-size: 15px;
-    color: #facc15; /* Yellow text */
-}
-
-/* Icon Base */
-.icon {
+    color: #ffa726; /* Light Orange */
+    margin-top: 12px;
+  }
+  
+  .icon {
     margin-right: 10px;
-    vertical-align: middle;
-    font-size: 18px;
-}
-
-/* Icon Specific Colors */
-.icon--experience {
-    color: #f97316; /* Orange */
-}
-
-.icon--projects {
-    color: #38bdf8; /* Sky Blue */
-}
-
-.icon--clients {
-    color: #4ade80; /* Green */
-}
-
-.education {
+    font-size: 20px;
+    color: #ff6a00; /* Orange */
+  }
+  
+  /* === Section Block Styling (Education, Experience, etc.) === */
+  .section-block {
     margin-top: 40px;
-}
-
-.education h3 {
+  }
+  
+  .section-block h3 {
     font-size: 24px;
-    color: #f97316;
+    color: #ff6a00; /* Orange */
+    font-weight: 600;
     margin-bottom: 20px;
-}
-
-.education-details {
+    border-bottom: 2px solid #f97316; /* Lighter Orange */
+    padding-bottom: 6px;
+  }
+  
+  .section-block p,
+  .section-block li {
     font-size: 16px;
-    color: #d4d4d4;
-}
-
-.education-item h4 {
+    color: #cccccc;
+  }
+  
+  .section-block h4 {
     font-size: 18px;
-    color: #f97316;
-}
-
-.languages {
-    margin-top: 40px;
-}
-
-.languages h3 {
-    font-size: 24px;
-    color: #f97316;
-    margin-bottom: 20px;
-}
-
-.languages ul {
+    color: #f97316; /* Lighter Orange */
+  }
+  
+  /* === Lists === */
+  ul {
     list-style-type: none;
     padding: 0;
-}
-
-.languages li {
-    font-size: 16px;
-    color: #d4d4d4;
-}
-
-.experience {
-    margin-top: 40px;
-}
-
-.experience h3 {
-    font-size: 24px;
-    color: #f97316;
-    margin-bottom: 20px;
-}
-
-.experience-details {
-    font-size: 16px;
-    color: #d4d4d4;
-}
-
-.experience-item h4 {
-    font-size: 18px;
-    color: #f97316;
-}
-
-.certifications {
-    margin-top: 40px;
-}
-
-.certifications h3 {
-    font-size: 24px;
-    color: #f97316;
-    margin-bottom: 20px;
-}
-
-.certifications ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.certifications li {
-    font-size: 16px;
-    color: #d4d4d4;
-}
-
-.certifications li .icon {
+  }
+  
+  .certifications li .icon {
     font-size: 20px;
     margin-right: 10px;
-}
-
-.interests {
-    margin-top: 40px;
-}
-
-.interests h3 {
-    font-size: 24px;
-    color: #f97316;
-    margin-bottom: 20px;
-}
-
-.interests ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.interests li {
-    font-size: 16px;
-    color: #d4d4d4;
-}
-
-.contact {
-    margin-top: 40px;
-}
-
-.contact h3 {
-    font-size: 24px;
-    color: #f97316;
-    margin-bottom: 20px;
-}
-
-.contact-details p {
-    font-size: 16px;
-    color: #d4d4d4;
-}
-
-.social-links a {
-    color: #38bdf8;
+  }
+  
+  /* === Social Links === */
+  .social-links a {
+    color: #f97316; /* Lighter Orange */
     margin-right: 15px;
-    font-size: 16px;
-}
-
-.social-links a:hover {
+    font-size: 18px;
+    transition: color 0.3s ease;
+  }
+  
+  .social-links a:hover {
+    color: #ffffff; /* White */
     text-decoration: underline;
-}
-
-@media (max-width: 768px) {
+  }
+  
+  /* === Responsive Styles === */
+  @media (max-width: 768px) {
     .about-content {
-        flex-direction: column;
-        text-align: center;
+      flex-direction: column;
+      text-align: center;
+      padding: 20px;
     }
-
-    .about-text h2 {
-        font-size: 28px;
-    }
-
-    .about-text h4 {
-        font-size: 18px;
-    }
-
+  
     .about-avatar {
-        width: 180px;
+      width: 180px;
     }
-
-    .education-item,
-    .experience-item {
-        margin-bottom: 20px;
+  
+    .about-text h2 {
+      font-size: 28px;
     }
-
-    .education h3,
-    .languages h3,
-    .experience h3,
-    .certifications h3,
-    .interests h3,
-    .contact h3 {
-        font-size: 20px;
+  
+    .about-text h4 {
+      font-size: 18px;
     }
-
+  
+    .section-block h3 {
+      font-size: 20px;
+    }
+  
     .contact-details p {
-        font-size: 14px;
+      font-size: 14px;
     }
-}
+  }
+  

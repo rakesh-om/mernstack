@@ -69,7 +69,8 @@ const ContactForm = () => {
   };
 
   return (
-    <div className="contact-form-container">
+    <section className='contact-form_section'>
+    <div className="contact-form-container page-wrapper">
       <h2 className="contact-form-title">Contact Me</h2>
       <p className="contact-form-subtitle">Let’s collaborate! Fill out the form to get in touch.</p>
 
@@ -169,6 +170,7 @@ const ContactForm = () => {
         </div>
       </form>
     </div>
+    </section>
   );
 };
 
