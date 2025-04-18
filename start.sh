@@ -1,9 +1,15 @@
 #!/bin/bash
 
-echo "🔧 Starting backend server..."
-(cd server && npm start) &
+echo "🔄 Installing dependencies for backend..."
+cd server
 
-sleep 2
 
-echo "🌐 Starting frontend client..."
-(cd client && npm start)
+echo "🚀 Starting backend server..."
+npm run dev &
+
+cd ../client
+echo "🔄 Installing dependencies for frontend..."
+
+
+echo "🌐 Starting React frontend..."
+npm start

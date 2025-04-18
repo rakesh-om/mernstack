@@ -7,21 +7,21 @@ const Footer = () => {
     <footer className="footer">
       <div className="footer-content">
         {/* Logo */}
-        <div className="footer-logo">MyPortfolio</div>
+        {/* <div className="footer-logo">MyPortfolio</div> */}
 
         {/* Navigation Links */}
         <nav className="footer-nav">
-          <ul>
+          {/* <ul>
             <li><a href="#home">Home</a></li>
             <li><a href="#services">Services</a></li>
             <li><a href="#about">About Me</a></li>
             <li><a href="#portfolio">Portfolio</a></li>
             <li><a href="#contact">Contact</a></li>
-          </ul>
+          </ul> */}
         </nav>
 
         {/* Social Links */}
-        <div className="footer-social">
+        {/* <div className="footer-social">
           <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
             <FaInstagram />
           </a>
@@ -31,7 +31,7 @@ const Footer = () => {
           <a href="https://behance.net/" target="_blank" rel="noopener noreferrer" aria-label="Behance">
             <FaBehance />
           </a>
-        </div>
+        </div> */}
 
         {/* Contact Info */}
         <div className="footer-contact">
@@ -40,11 +40,11 @@ const Footer = () => {
         </div>
       </div>
 
-      <hr className="footer-divider" />
+      {/* <hr className="footer-divider" />
 
       <div className="footer-bottom">
         <p>© {new Date().getFullYear()} Designed by @mahmood.fazile | UI/UX Designer</p>
-      </div>
+      </div> */}
     </footer>
   );
 };

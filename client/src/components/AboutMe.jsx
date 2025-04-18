@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { getProfile } from '../api/api';
 import './AboutMe.css';
 
+
 // Icons
 import { FaBrain, FaRocket } from 'react-icons/fa';
 
@@ -42,7 +43,8 @@ const AboutMe = () => {
 
   return (
     <section className="about-section">
-      <div className="container page-wrapper">
+      
+      <div className="container page-wrapper"> <h1>About Me</h1>
         <div className="about-content">
           <div className='imgae-about'><img
             src={profile.avatar || '/default-profile.png'}

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { getProfile } from '../api/api';
 import '../components/Navbar.css';
 
@@ -25,24 +26,25 @@ const Header = () => {
     <header className='header'>
       <nav className="navbar">
         <div className="navbar-burger" onClick={toggleMobileMenu}>
-          <div className="bar"></div>
-          <div className="bar"></div>
-          <div className="bar"></div>
+          <div className={`bar ${isMobileMenuOpen ? 'close' : ''}`}></div>
+          <div className={`bar ${isMobileMenuOpen ? 'close' : ''}`}></div>
+          <div className={`bar ${isMobileMenuOpen ? 'close' : ''}`}></div>
         </div>
 
         <div className="navbar-logo">
-          {profile?.name || 'LOGO'}
+          <Link to="/" className="navbar-brand">
+            {profile?.name || 'LOGO'}
+          </Link>
         </div>
 
         <ul className={`navbar-links ${isMobileMenuOpen ? 'active' : ''}`}>
-          <li className="navbar-link">Home</li>
-          <li className="navbar-link">Services</li>
-          <li className="navbar-link">About me</li>
-          <li className="navbar-link">Portfolio</li>
-          <li className="navbar-link">Contact me</li>
+          <li><Link to="/" className="navbar-link">Home</Link></li>
+          <li><Link to="/about" className="navbar-link">About Me</Link></li>
+          <li><Link to="/services" className="navbar-link">Services</Link></li>
+          <li><Link to="/contact" className="navbar-link">Contact Me</Link></li>
         </ul>
 
-        <button className="hire-button">Hire me</button>
+        <a href="/contact" className="hire-button">Hire me</a>
       </nav>
     </header>
   );

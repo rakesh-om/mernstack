@@ -1,39 +1,40 @@
-/* === Global Contact Form Styles === */
+/* === Container === */
 .contact-form-container {
-  background-color: #1a1a1a;
-  border-radius: 12px;
-  padding: 40px 30px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+ 
+  border-radius: 1rem;
+  padding: 3rem 2rem;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
   max-width: 900px;
   margin: auto;
 }
 
+/* === Title & Subtitle === */
 .contact-form-title {
-  font-size: 32px;
-  color: #ffa500; /* Orange title */
+  font-size: 2.25rem;
+  color: #f97316;
   text-align: center;
-  margin-bottom: 10px;
   font-weight: 700;
+  margin-bottom: 0.5rem;
 }
 
 .contact-form-subtitle {
-  font-size: 16px;
+  font-size: 1rem;
   text-align: center;
-  color: #cccccc;
-  margin-bottom: 30px;
+  color: #cbd5e1;
+  margin-bottom: 2rem;
 }
 
-/* === Form Layout === */
+/* === Layout === */
 .contact-form {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 2rem;
 }
 
 .contact-form-row {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 1.25rem;
 }
 
 @media (min-width: 768px) {
@@ -43,7 +44,7 @@
   }
 }
 
-/* === Form Input Group === */
+/* === Input Groups === */
 .form-input-group {
   flex: 1;
   display: flex;
@@ -52,21 +53,20 @@
 
 .form-label {
   font-weight: 600;
-  margin-bottom: 6px;
-  color: #ffcc70; /* Lighter gold */
+  margin-bottom: 0.5rem;
+  color: #fbbf24; /* golden yellow */
 }
 
-/* === Form Fields Styles === */
+/* === Fields === */
 .form-input,
 .form-select,
 .form-textarea {
-  background-color: #121212;
-  border: 1px solid #ffa500;
-  color: white;
-  padding: 12px 16px;
-  border-radius: 8px;
-  font-size: 14px;
-  resize: vertical;
+  background-color: #0f0f0f;
+  border: 1px solid #f97316;
+  color: #f1f5f9;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -74,55 +74,55 @@
 .form-select:focus,
 .form-textarea:focus {
   outline: none;
-  border-color: #ff9900;
-  box-shadow: 0 0 8px #ff9900;
+  border-color: #fb923c;
+  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.4);
+}
+
+/* === Error Messages === */
+.form-error {
+  margin-top: 0.4rem;
+  font-size: 0.875rem;
+  color: #f87171;
 }
 
 /* === Submit Button === */
 .form-button-container {
   text-align: center;
-  margin-top: 20px;
 }
 
 .form-submit-button {
-  background-color: #ffa500;
+  background-color: #f97316;
   color: #000000;
-  font-weight: bold;
-  padding: 14px 30px;
+  font-weight: 600;
+  padding: 0.9rem 2rem;
   border: none;
-  border-radius: 8px;
-  font-size: 16px;
+  border-radius: 0.5rem;
+  font-size: 1rem;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .form-submit-button:hover {
-  background-color: #ff8800;
+  background-color: #fb923c;
   transform: translateY(-2px);
 }
 
-/* === Form Responsiveness === */
+/* === Responsive Adjustments === */
 @media (max-width: 768px) {
   .contact-form-container {
-    padding: 30px 20px;
+    padding: 2rem 1.5rem;
   }
 
   .contact-form-title {
-    font-size: 28px;
+    font-size: 1.75rem;
   }
 
   .contact-form-subtitle {
-    font-size: 14px;
-  }
-
-  .form-input,
-  .form-select,
-  .form-textarea {
-    font-size: 16px;
+    font-size: 0.95rem;
   }
 
   .form-submit-button {
-    font-size: 14px;
-    padding: 10px 24px;
+    font-size: 0.95rem;
+    padding: 0.75rem 1.75rem;
   }
 }

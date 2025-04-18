@@ -15,7 +15,7 @@ body {
     align-items: center;
     justify-content: center;
     padding: 30px;
-    background-color: #0f0f0f; /* Deep black */
+     /* Deep black */
     border-radius: 20px;
     box-shadow: 0 0 20px rgba(255, 87, 34, 0.1);
   }
